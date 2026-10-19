@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Kaptur</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon32.png" width="22" height="22" alt="">
+    <h1>Kaptur</h1>
+    <span id="conn" class="pill">…</span>
+  </header>
+
+  <section class="current">
+    <div id="site" class="site"></div>
+    <div id="target" class="target"></div>
+    <div class="buttons">
+      <button id="dl" class="primary">İndir</button>
+      <button id="dltr">İndir + transcript</button>
+    </div>
+    <p id="message" class="message" hidden></p>
+    <p id="hint" class="hint"></p>
+  </section>
+
+  <section>
+    <h2>Son işler</h2>
+    <ul id="jobs"></ul>
+    <p id="empty" class="hint">Henüz indirme yok.</p>
+  </section>
+
+  <footer>
+    <button id="openApp" class="link">Kaptur penceresini aç</button>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

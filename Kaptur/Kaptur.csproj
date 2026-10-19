@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Kaptur</RootNamespace>
+    <AssemblyName>Kaptur</AssemblyName>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <!-- AppIcon'dan üretilir: Kaptur.exe export-icons komutu (SelfTest.ExportIcons). -->
+    <ApplicationIcon>Assets\kaptur.ico</ApplicationIcon>
+    <Version>0.2.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\transcribe.py" LogicalName="Kaptur.transcribe.py" />
+    <!-- Chrome eklentisi exe'nin yanına kopyalanır; uygulama açılışta onu %LOCALAPPDATA%\Kaptur\ChromeExtension'a taşır. -->
+    <None Include="Extension\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

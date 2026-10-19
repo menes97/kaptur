@@ -1,0 +1,18 @@
+# Bu klasörde başka projeler de duruyor. Beyaz liste: yalnızca Kaptur'a ait olanlar depoya girer.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/Kaptur/
+!/docs/
+!/branding/
+/branding/*
+!/branding/kaptur.png
+
+# .NET derleme çıktıları
+bin/
+obj/
+dist/
+*.user
+.vs/
+*.part

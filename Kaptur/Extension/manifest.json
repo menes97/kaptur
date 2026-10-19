@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Kaptur",
+  "version": "0.2.0",
+  "description": "Instagram ve X videolarını tek tıkla Kaptur ile indir, istersen transcript çıkar.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jPyiE0zZ5Z6PS8ZVlxQzl5HbJgVrOtWqHDjRLQZu7y5hlfoAk1mOxWL+j6UwU+iiJkt6HyN29XZrypYKVwxEf8TKEQa0FppB850WMJ84jPbEVthv0/5WLf67QSZ3ombhUN50sWwTsLzGRMk2LafH+LMWNOZ3lsAy/758oipG+KR0b2n2sNJgZXPLK38pFtOqydtFImDz75fmYP/7qogO/Gs6P+wSM7EktRgQiAgIt8S4GrqMw0ptFDwqYECQ8WqKbVm6EZ/JJfC2o8WQUsaDByzI0izwVMt/PSr8l8pENHlbxxQTxV0pjwFHpnXO2/5KkgsTcL3/z7okbnUrENylwIDAQAB",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "cookies",
+    "contextMenus",
+    "nativeMessaging",
+    "notifications",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "https://*.instagram.com/*",
+    "https://*.x.com/*",
+    "https://*.twitter.com/*",
+    "https://*.tiktok.com/*",
+    "https://*.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Kaptur",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.instagram.com/*",
+        "https://*.x.com/*",
+        "https://*.twitter.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
