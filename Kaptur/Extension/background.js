@@ -7,7 +7,7 @@ const BASE = 'http://127.0.0.1:48214';
 const NATIVE_HOST = 'com.kaptur.host';
 // Sıradan web sayfaları bu başlığı CORS ön kontrolü olmadan gönderemez; köprü onsuz isteği reddeder.
 const BRIDGE_HEADERS = { 'X-Kaptur-Extension': '1' };
-const POST_URL = /^https:\/\/(www\.|m\.)?(instagram\.com\/([\w.]+\/)?(reels?|p|tv)\/[\w-]+|(x|twitter|mobile\.twitter)\.com\/\w+\/status\/\d+)/i;
+const POST_URL = /^https:\/\/(www\.|m\.)?(instagram\.com\/([\w.]+\/)?(reels?|p|tv)\/[\w-]+|(x|twitter|mobile\.twitter)\.com\/\w+\/status\/\d+|(www\.|m\.|music\.)?youtube\.com\/(watch\?.*v=|shorts\/)[\w-]{6,}|youtu\.be\/[\w-]{6,})/i;
 const CONTEXT_TARGET_TTL = 10_000;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

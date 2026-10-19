@@ -39,7 +39,7 @@ sealed class TrayContext : ApplicationContext
         {
             if (form.Visible || hintedTray) return;
             hintedTray = true;
-            ShowBalloon("Kaptur tepside çalışıyor", "Instagram/X linki kopyaladığınızda size soracağım. Çıkmak için tepsi simgesine sağ tıklayın.", ToolTipIcon.Info, null);
+            ShowBalloon("Kaptur tepside çalışıyor", "Instagram, X ya da YouTube linki kopyaladığınızda size soracağım. Çıkmak için tepsi simgesine sağ tıklayın.", ToolTipIcon.Info, null);
         };
 
         watchItem = new ToolStripMenuItem("Panoyu izle", null, (_, _) =>
@@ -91,7 +91,7 @@ sealed class TrayContext : ApplicationContext
         lastClipUrl = url;
         lastClipAt = DateTime.UtcNow;
 
-        var site = LinkDetector.IsInstagram(url) ? "Instagram" : "X";
+        var site = LinkDetector.SiteName(url);
         if (settings.AutoDownloadFromClipboard)
         {
             jobs.AddUrl(url, settings.TranscribeByDefault);

@@ -24,10 +24,7 @@ sealed class Job
     public Task Completion => done.Task;
 
     public bool IsActive => State is JobState.Queued or JobState.Preparing or JobState.Downloading or JobState.Transcribing;
-    public string SourceLabel => IsLocalFile ? "Dosya"
-        : LinkDetector.IsInstagram(Source) ? "Instagram"
-        : Source.Contains("x.com/", StringComparison.OrdinalIgnoreCase) ? "X"
-        : "Web";
+    public string SourceLabel => IsLocalFile ? "Dosya" : LinkDetector.SiteName(Source);
 
     internal void Finish() => done.TrySetResult();
     internal void ResetForRerun() { Cts = new(); }

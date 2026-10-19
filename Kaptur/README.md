@@ -4,7 +4,7 @@
 
 > Eski adı ReelGrab. İlk açılışta `%LOCALAPPDATA%\ReelGrab` verileri `%LOCALAPPDATA%\Kaptur` klasörüne taşınır.
 
-Windows tepsisinde çalışan küçük bir uygulama. Instagram ve X (Twitter) linklerindeki videoları indirir, isterseniz
+Windows tepsisinde çalışan küçük bir uygulama. Instagram, X (Twitter) ve YouTube linklerindeki videoları indirir, isterseniz
 faster-whisper ile `.txt` ve `.srt` transcript çıkarır. [mc-download-manager](https://github.com/mstcvk/mc-download-manager)'ın
 macOS'taki yt-dlp yaklaşımı örnek alınarak .NET (WinForms) ile yazıldı.
 

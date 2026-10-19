@@ -11,7 +11,7 @@ sealed class SettingsForm : Form
     readonly ComboBox model = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 300 };
     readonly ComboBox language = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 200 };
     readonly ComboBox device = new() { DropDownStyle = ComboBoxStyle.DropDownList, Width = 200 };
-    readonly CheckBox watchClip = new() { Text = "Panoyu izle: Instagram/X linki kopyalanınca bildirim göster", AutoSize = true };
+    readonly CheckBox watchClip = new() { Text = "Panoyu izle: Instagram, X ya da YouTube linki kopyalanınca bildirim göster", AutoSize = true };
     readonly CheckBox autoDl = new() { Text = "Sormadan hemen indir", AutoSize = true, Margin = new Padding(20, 3, 3, 3) };
     readonly CheckBox autostart = new() { Text = "Windows ile birlikte tepside başlat", AutoSize = true };
     readonly CheckBox bridge = new() { AutoSize = true };

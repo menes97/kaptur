@@ -2,7 +2,7 @@
 'use strict';
 
 const $ = (id) => document.getElementById(id);
-const POST_URL = /^https:\/\/(www\.|m\.)?(instagram\.com\/([\w.]+\/)?(reels?|p|tv)\/[\w-]+|(x|twitter|mobile\.twitter)\.com\/\w+\/status\/\d+)/i;
+const POST_URL = /^https:\/\/(www\.|m\.)?(instagram\.com\/([\w.]+\/)?(reels?|p|tv)\/[\w-]+|(x|twitter|mobile\.twitter)\.com\/\w+\/status\/\d+|(www\.|m\.|music\.)?youtube\.com\/(watch\?.*v=|shorts\/)[\w-]{6,}|youtu\.be\/[\w-]{6,})/i;
 const SOCIAL_HOST = /(^|\.)(instagram\.com|x\.com|twitter\.com)$/i;
 
 let tabUrl = '';
@@ -23,8 +23,9 @@ function showMessage(text, kind) {
 function describeTab(url) {
   let u;
   try { u = new URL(url); } catch { return { site: 'İndirilemez sayfa', ok: false, hint: '' }; }
-  if (!/^https?:$/.test(u.protocol)) return { site: 'İndirilemez sayfa', ok: false, hint: 'Bir Instagram ya da X gönderisi açın.' };
+  if (!/^https?:$/.test(u.protocol)) return { site: 'İndirilemez sayfa', ok: false, hint: 'Bir Instagram, X ya da YouTube videosu açın.' };
   if (POST_URL.test(url)) {
+    if (/youtu/.test(u.hostname)) return { site: u.pathname.startsWith('/shorts/') ? 'YouTube Shorts' : 'YouTube videosu', ok: true, hint: '' };
     const insta = u.hostname.includes('instagram');
     return { site: insta ? (/\/reels?\//.test(u.pathname) ? 'Instagram reel' : 'Instagram gönderisi') : 'X gönderisi', ok: true, hint: '' };
   }

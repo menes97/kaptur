@@ -39,7 +39,7 @@ sealed class MainForm : Form
         this.settings = settings;
         this.jobs = jobs;
 
-        Text = "Kaptur — Instagram & X indirici";
+        Text = "Kaptur — Instagram, X ve YouTube indirici";
         Icon = AppIcon.Create();
         Font = SystemFonts.MessageBoxFont;
         AutoScaleMode = AutoScaleMode.Dpi;
@@ -78,7 +78,7 @@ sealed class MainForm : Form
         var hint = new Label
         {
             AutoSize = true,
-            Text = "Instagram / X linkini yapıştırın (Ctrl+V) ya da bir video dosyasını pencereye sürükleyip yalnızca transcript çıkarın.",
+            Text = "Instagram, X ya da YouTube linkini yapıştırın (Ctrl+V) ya da bir video dosyasını pencereye sürükleyip yalnızca transcript çıkarın.",
             Margin = new Padding(0, 0, 0, 6),
         };
 
