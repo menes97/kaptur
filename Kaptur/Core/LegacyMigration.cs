@@ -14,8 +14,33 @@ static class LegacyMigration
         // Ayrı bir veri klasörüyle (KAPTUR_HOME) çalışan kopyalar kullanıcının asıl kurulumuna dokunmasın.
         if (Environment.GetEnvironmentVariable("KAPTUR_HOME") is { Length: > 0 }) return;
         MoveDataFolder();
+        CleanLeftovers();
         MoveAutostart();
         RemoveOldNativeHost();
+    }
+
+    /// Adında hâlâ ReelGrab geçen artıklar: eski günlük yeniden adlandırılır, eski kayıt dosyası silinir,
+    /// taşınamamış eski veri klasörü (Kaptur klasörü zaten varken) Geri Dönüşüm Kutusu'na gönderilir.
+    static void CleanLeftovers()
+    {
+        try
+        {
+            var oldLog = Path.Combine(AppPaths.Root, "reelgrab.log");
+            if (File.Exists(oldLog))
+            {
+                var target = File.Exists(AppPaths.LogFile) ? Path.Combine(AppPaths.Root, "kaptur-eski.log") : AppPaths.LogFile;
+                if (File.Exists(target)) { File.AppendAllText(target, File.ReadAllText(oldLog)); File.Delete(oldLog); }
+                else File.Move(oldLog, target);
+            }
+            var oldManifest = Path.Combine(AppPaths.Root, "native-host", OldHostName + ".json");
+            if (File.Exists(oldManifest)) File.Delete(oldManifest);
+
+            var old = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), OldName);
+            if (Directory.Exists(old) && Directory.Exists(AppPaths.Root))
+                Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(old,
+                    Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
+        }
+        catch { /* temizlik başarısızsa sorun değil, bir sonraki açılışta yeniden denenir */ }
     }
 
     static void MoveDataFolder()
